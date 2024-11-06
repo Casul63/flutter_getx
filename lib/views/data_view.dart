@@ -1,0 +1,25 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../controllers/data_controller.dart';
+
+class DataView extends StatelessWidget {
+  final DataController dataController = Get.put(DataController());
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Data Item')),
+      body: Obx(
+        () {
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(dataController.items[index]),
+              );
+            },
+            itemCount: dataController.items.length,
+          );
+        },
+      ),
+    );
+  }
+}
